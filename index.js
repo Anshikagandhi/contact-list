@@ -9,6 +9,7 @@ app.set('view engine','ejs'); //setting a value for the property//stp1
 app.set('views', path.join(__dirname,'/views'));// step2
 app.use(express.urlencoded());         // this is known as a middleware
 
+//it contains an array of objects
 var contactList=[
 {
     name: "Anshika",
@@ -24,6 +25,8 @@ var contactList=[
 }
 
 ]
+
+//route for get request
 app.get('/',function(req,res){
     
     return res.render('home',
@@ -35,12 +38,14 @@ app.get('/',function(req,res){
 }
 )
 
-
+//route for practice request
 app.get('/practice',function(req,res){
     return res.render('practice',{title:"Let us play with ejs"});
 
 }
 )
+
+//route for post request
 app.post('/create_contact',function(req,res){
     // return res.redirect('/practice'); 
      //redirect takes us to the url ..it is a controller
@@ -51,6 +56,7 @@ app.post('/create_contact',function(req,res){
      return res.redirect('/');
  });
 
+//it helps to make the server listen on port 8000
 app.listen(port,function(err){
  if(err)
  {
